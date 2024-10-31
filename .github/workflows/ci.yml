@@ -10,16 +10,6 @@ jobs:
   continuous-integration:
     runs-on: ubuntu-latest
 
-    services:
-      api:
-        image: greencycle-api:latest
-        options: --network-alias api
-        build:
-          context: .
-          dockerfile: Dockerfile
-        ports:
-          - "8080:8080"
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -27,11 +17,14 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '21'  # Última versão suportada
+          java-version: '21'  # Última versão estável
           distribution: 'adopt'
 
       - name: Build Docker image
         run: docker build -t greencycle-api:latest .
+
+      - name: Start Docker Compose
+        run: docker-compose up -d  # Inicia o container em background
 
       - name: Install dependencies
         run: mvn install -DskipTests
@@ -40,6 +33,9 @@ jobs:
         env:
           API_BASE_URL: http://localhost:8080
         run: mvn clean test
+
+      - name: Stop Docker Compose
+        run: docker-compose down  # Para e remove os containers após os testes
 
   deploy:
     runs-on: ubuntu-latest
