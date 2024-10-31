@@ -13,6 +13,10 @@ jobs:
     services:
       api:
         image: greencycle-api:latest
+        options: --network-alias api
+        build:
+          context: .
+          dockerfile: Dockerfile
         ports:
           - "8080:8080"
 
@@ -25,6 +29,9 @@ jobs:
         with:
           java-version: '21'  # Última versão suportada
           distribution: 'adopt'
+
+      - name: Build Docker image
+        run: docker build -t greencycle-api:latest .
 
       - name: Install dependencies
         run: mvn install -DskipTests
