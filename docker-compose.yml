@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-  # Serviço do MongoDB
   mongodb:
     image: mongo:6.0
     container_name: mongo
@@ -13,33 +12,33 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-  # Serviço da API Java (Greencycle)
   api:
-    image: cassianodev/greencycle-api:latest  # Utilize uma imagem existente da API
+    image: cassianodev/greencycle-api:latest
     ports:
       - "8080:8080"
     environment:
       - PROFILE=dev
-      - SPRING_DATA_MONGODB_URI=mongodb+srv://cassivariedadesAdmin:admin%401234@cluster0.o10wb.mongodb.net/greencycle?retryWrites=true&w=majority
+      - SPRING_DATA_MONGODB_URI=mongodb://root:root_pass@mongo:27017/greencycle?authSource=admin
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_started
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
-      interval: 10s
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 15s
       timeout: 5s
       retries: 5
-      start_period: 30s
+      start_period: 60s
 
-  # Serviço de testes
   tests:
     image: maven:3.9.8-eclipse-temurin-21
     container_name: test-runner
     working_dir: /opt/tests
     volumes:
-      - .:/opt/tests  # Monta o projeto de testes no container
+      - .:/opt/tests
     depends_on:
-      - api
-    entrypoint: ["mvn", "clean", "test"]
+      api:
+        condition: service_healthy
+    entrypoint: ["sh", "-c", "sleep 20 && mvn clean test"]
 
 volumes:
   mongodb_data:
