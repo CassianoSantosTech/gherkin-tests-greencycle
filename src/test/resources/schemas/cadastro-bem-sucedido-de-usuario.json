@@ -1,0 +1,166 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1730327765.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "id",
+    "accountNonExpired",
+    "accountNonLocked",
+    "password",
+    "username",
+    "authorities",
+    "credentialsNonExpired",
+    "enabled",
+    "idUsuario",
+    "nome",
+    "email",
+    "senha",
+    "role"
+  ],
+  "properties": {
+    "id": {
+      "$id": "#root/id",
+      "title": "Id",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "67229b9d9265b133f37e0918"
+      ],
+      "pattern": "^.*$"
+    },
+    "accountNonExpired": {
+      "$id": "#root/accountNonExpired",
+      "title": "Accountnonexpired",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "accountNonLocked": {
+      "$id": "#root/accountNonLocked",
+      "title": "Accountnonlocked",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "password": {
+      "$id": "#root/password",
+      "title": "Password",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "$2a$10$UPNB14W6lWbzVBIjk7fe4uCAnxRhI3GwqCNmSGP7IZdcClp/ukiSW"
+      ],
+      "pattern": "^.*$"
+    },
+    "username": {
+      "$id": "#root/username",
+      "title": "Username",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "pauloEdu@gmail.com"
+      ],
+      "pattern": "^.*$"
+    },
+    "authorities": {
+      "$id": "#root/authorities",
+      "title": "Authorities",
+      "type": "array",
+      "default": [],
+      "items":{
+        "$id": "#root/authorities/items",
+        "title": "Items",
+        "type": "object",
+        "required": [
+          "authority"
+        ],
+        "properties": {
+          "authority": {
+            "$id": "#root/authorities/items/authority",
+            "title": "Authority",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "ROLE_USER"
+            ],
+            "pattern": "^.*$"
+          }
+        }
+      }
+
+    },
+    "credentialsNonExpired": {
+      "$id": "#root/credentialsNonExpired",
+      "title": "Credentialsnonexpired",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "enabled": {
+      "$id": "#root/enabled",
+      "title": "Enabled",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "idUsuario": {
+      "$id": "#root/idUsuario",
+      "title": "Idusuario",
+      "type": "integer",
+      "examples": [
+        15
+      ],
+      "default": 0
+    },
+    "nome": {
+      "$id": "#root/nome",
+      "title": "Nome",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "1"
+      ],
+      "pattern": "^.*$"
+    },
+    "email": {
+      "$id": "#root/email",
+      "title": "Email",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "1"
+      ],
+      "pattern": "^.*$"
+    },
+    "senha": {
+      "$id": "#root/senha",
+      "title": "Senha",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "$2a$10$UPNB14W6lWbzVBIjk7fe4uCAnxRhI3GwqCNmSGP7IZdcClp/ukiSW"
+      ],
+      "pattern": "^.*$"
+    },
+    "role": {
+      "$id": "#root/role",
+      "title": "Role",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "USER"
+      ],
+      "pattern": "^.*$"
+    }
+  }
+}
