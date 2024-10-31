@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - '*'  # Qualquer branch
+      - '*'  # Executa em qualquer branch
 
 jobs:
   continuous-integration:
@@ -17,25 +17,37 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '21'  # Última versão estável
-          distribution: 'adopt'
+          java-version: '21'
+          distribution: 'temurin'  # Altere para a versão Java que seu projeto utiliza
 
       - name: Build Docker image
         run: docker build -t greencycle-api:latest .
 
-      - name: Start Docker Compose
-        run: docker-compose up -d  # Inicia o container em background
+      - name: Start MongoDB container
+        run: docker run -d --name mongodb -p 27017:27017 mongo
+
+      - name: Start API container
+        run: docker run -d --name greencycle-api --link mongodb:mongo -e MONGO_URI=mongodb://mongo:27017 -p 8080:8080 greencycle-api:latest
+
+      - name: Wait for API to be ready
+        run: |
+          until curl -s http://localhost:8080/actuator/health | grep '"status":"UP"' > /dev/null; do
+            echo "Waiting for API to be up..."
+            sleep 5
+          done
 
       - name: Install dependencies
         run: mvn install -DskipTests
 
       - name: Run tests
         env:
-          API_BASE_URL: http://localhost:8080
+          API_BASE_URL: http://localhost:8080  # Define a URL base
         run: mvn clean test
 
-      - name: Stop Docker Compose
-        run: docker-compose down  # Para e remove os containers após os testes
+      - name: Stop and remove containers
+        run: |
+          docker stop greencycle-api mongodb
+          docker rm greencycle-api mongodb
 
   deploy:
     runs-on: ubuntu-latest
@@ -45,4 +57,4 @@ jobs:
       - name: Deploy application
         run: |
           echo "Deploying application..."
-          # Adicione aqui seu comando de deploy
+          # Adicione seu comando de deploy aqui
