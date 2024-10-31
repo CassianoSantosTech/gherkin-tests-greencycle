@@ -70,4 +70,14 @@ public class UsuariosStep {
         usuariosService.editUsuario(endpoint);
     }
 
+    @Quando("eu enviar a requisição para o endpoint {string} de listagem de usuários")
+    public void euEnviarARequisicaoParaOEndpointDeListagemDeUsuarios(String endpoint) {
+        usuariosService.listUsuarios(endpoint);
+    }
+
+    @Então("a resposta deve conter uma lista de usuários")
+    public void aRespostaDeveConterUmaListaDeUsuarios() {
+        Assert.assertTrue("A resposta não contém uma lista de usuários", usuariosService.isResponseList());
+    }
+
 }

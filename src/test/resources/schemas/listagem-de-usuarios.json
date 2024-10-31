@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "accountNonExpired",
+      "accountNonLocked",
+      "authorities",
+      "credentialsNonExpired",
+      "username",
+      "password",
+      "enabled",
+      "idUsuario",
+      "nome",
+      "email",
+      "senha",
+      "role"
+    ],
+    "properties": {
+      "id": { "type": "string" },
+      "accountNonExpired": { "type": "boolean" },
+      "accountNonLocked": { "type": "boolean" },
+      "authorities": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "authority": { "type": "string" }
+          },
+          "required": ["authority"]
+        }
+      },
+      "credentialsNonExpired": { "type": "boolean" },
+      "username": { "type": "string" },
+      "password": { "type": "string" },
+      "enabled": { "type": "boolean" },
+      "idUsuario": { "type": ["integer", "null"] },
+      "nome": { "type": "string" },
+      "email": { "type": "string" },
+      "senha": { "type": "string" },
+      "role": { "type": "string" }
+    }
+  }
+}

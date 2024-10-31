@@ -84,18 +84,27 @@ public class UsuarioService {
     public void setContract(String contract) throws IOException {
         switch (contract) {
             case "Cadastro bem-sucedido de usuario" -> jsonSchema = loadJsonFromFile(schemasPath + "cadastro-bem-sucedido-de-usuario.json");
-            case "Edição bem-sucedida de usuario" -> jsonSchema = loadJsonFromFile(schemasPath + "edicao-bem-sucedida-de-usuario.json"); // Novo contrato
+            case "Edição bem-sucedida de usuario" -> jsonSchema = loadJsonFromFile(schemasPath + "edicao-bem-sucedida-de-usuario.json");
+            case "Listagem de usuários" -> jsonSchema = loadJsonFromFile(schemasPath + "listagem-de-usuarios.json");
             default -> throw new IllegalStateException("Unexpected contract" + contract);
         }
     }
 
     public Set<ValidationMessage> validateResponseAgainstSchema() throws IOException {
-        JSONObject jsonResponse = new JSONObject(response.getBody().asString());
+        String responseBody = response.getBody().asString();
+
+        // Verifica se a resposta é um array JSON
+        JsonNode jsonResponseNode;
+        if (responseBody.trim().startsWith("[")) {
+            jsonResponseNode = mapper.readTree(responseBody); // Parse o array JSON diretamente
+        } else {
+            JSONObject jsonResponse = new JSONObject(responseBody);
+            jsonResponseNode = mapper.readTree(jsonResponse.toString()); // Parse o objeto JSON
+        }
+
         JsonSchemaFactory schemaFactory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
         JsonSchema schema = schemaFactory.getSchema(jsonSchema.toString());
-        JsonNode jsonResponseNode = mapper.readTree(jsonResponse.toString());
-        Set<ValidationMessage> schemaValidationErrors = schema.validate(jsonResponseNode);
-        return schemaValidationErrors;
+        return schema.validate(jsonResponseNode);
     }
 
     public void editUsuario(String endPoint) {
@@ -112,6 +121,21 @@ public class UsuarioService {
                 .response();
     }
 
+    public void listUsuarios(String endPoint) {
+        String url = baseUrl + endPoint;
+        response = given()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .when()
+                .get(url)
+                .then()
+                .extract()
+                .response();
+    }
+
+    public boolean isResponseList() {
+        return response.jsonPath().getList("$").size() > 0;
+    }
 
 
 }
