@@ -22,9 +22,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y docker-compose
 
-      - name: Start API with Docker Compose
-        run: |
-          docker-compose -f ../greencycle/docker-compose.yml up -d
+      - name: Start API and MongoDB containers
+        run: docker-compose up -d
         env:
           API_BASE_URL: "http://localhost:8080"
 
@@ -40,4 +39,4 @@ jobs:
 
       - name: Clean up
         if: always()
-        run: docker-compose -f ../greencycle/docker-compose.yml down --volumes
+        run: docker-compose down --volumes
