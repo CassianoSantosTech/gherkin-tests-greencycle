@@ -38,12 +38,11 @@ public class UsuarioService {
             case "email" -> usuarioModel.setEmail(value);
             case "senha" -> usuarioModel.setSenha(value);
             case "role" -> usuarioModel.setRole(value);
-//            case "role" -> usuarioModel.setRole(UserRole.valueOf(value.toUpperCase()));
             default -> throw new IllegalStateException("Campo invalido" + field);
         }
     }
 
-    public  void createUsuario(String endPoint) {
+    public void createUsuario(String endPoint) {
         String url = baseUrl + endPoint;
         String bodySend = gson.toJson(usuarioModel);
         response = given()
