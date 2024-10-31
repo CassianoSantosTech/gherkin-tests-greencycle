@@ -23,6 +23,12 @@ services:
       - SPRING_DATA_MONGODB_URI=mongodb+srv://cassivariedadesAdmin:admin%401234@cluster0.o10wb.mongodb.net/greencycle?retryWrites=true&w=majority
     depends_on:
       - mongodb
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   # Serviço de testes
   tests:
