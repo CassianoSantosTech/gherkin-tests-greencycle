@@ -15,7 +15,7 @@ services:
 
   # Serviço da API Java (Greencycle)
   api:
-    image: greencycle-api:latest  # Utilize uma imagem existente da API
+    image: ghcr.io/seu_usuario/greencycle-api:latest  # Utilize uma imagem existente da API
     ports:
       - "8080:8080"
     environment:
