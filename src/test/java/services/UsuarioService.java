@@ -25,8 +25,7 @@ public class UsuarioService {
     final UsuarioModel usuarioModel = new UsuarioModel();
     public final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     public Response response;
-    //    String baseUrl = "http://localhost:8080";
-    String baseUrl = System.getenv("API_BASE_URL");
+    String baseUrl = "http://localhost:8080";
     String idUsuario;
     JSONObject jsonSchema;
     String schemasPath = "src/test/resources/schemas/";
@@ -85,6 +84,7 @@ public class UsuarioService {
     public void setContract(String contract) throws IOException {
         switch (contract) {
             case "Cadastro bem-sucedido de usuario" -> jsonSchema = loadJsonFromFile(schemasPath + "cadastro-bem-sucedido-de-usuario.json");
+            case "Edição bem-sucedida de usuario" -> jsonSchema = loadJsonFromFile(schemasPath + "edicao-bem-sucedida-de-usuario.json"); // Novo contrato
             default -> throw new IllegalStateException("Unexpected contract" + contract);
         }
     }
@@ -97,6 +97,21 @@ public class UsuarioService {
         Set<ValidationMessage> schemaValidationErrors = schema.validate(jsonResponseNode);
         return schemaValidationErrors;
     }
+
+    public void editUsuario(String endPoint) {
+        String url = baseUrl + endPoint;
+        String bodySend = gson.toJson(usuarioModel);
+        response = given()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .body(bodySend)
+                .when()
+                .put(url)
+                .then()
+                .extract()
+                .response();
+    }
+
 
 
 }

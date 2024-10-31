@@ -35,7 +35,6 @@ public class UsuariosStep {
 
     @Dado("que eu recupere o id criado no contexto:")
     public void queEuRecupereOIdCriadoNoContexto(List<Map<String, String>> rows) {
-//        usuariosService.retrieveIdUsuario();
         for (Map<String, String> columns : rows) {
             usuariosService.setFieldsUsuario(columns.get("campo"), columns.get("valor"));
         }
@@ -58,4 +57,17 @@ public class UsuariosStep {
         Assert.assertTrue("O contrato está inválido. Erros encontrados: " + validateResponse, validateResponse.isEmpty());
 
     }
+
+    @Dado("que eu tenha os seguintes dados de usuario para edição:")
+    public void queEuTenhaOsSeguintesDadosDeUsuarioParaEdicao(List<Map<String, String>> rows) {
+        for (Map<String, String> columns : rows) {
+            usuariosService.setFieldsUsuario(columns.get("campo"), columns.get("valor"));
+        }
+    }
+
+    @Quando("eu enviar a requisicao para o endpoint {string} de edição de usuario")
+    public void euEnviarARequisicaoParaOEndpointDeEdicaoDeUsuario(String endpoint) {
+        usuariosService.editUsuario(endpoint);
+    }
+
 }
