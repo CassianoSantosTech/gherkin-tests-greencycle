@@ -1,0 +1,54 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1730420105.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "role",
+    "idUsuario",
+    "emailLogin",
+    "senhaLogin"
+  ],
+  "properties": {
+    "role": {
+      "$id": "#root/role",
+      "title": "Role",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "ADMIN"
+      ],
+      "pattern": "^.*$"
+    },
+    "idUsuario": {
+      "$id": "#root/idUsuario",
+      "title": "Idusuario",
+      "type": "integer",
+      "examples": [
+        150
+      ],
+      "default": 0
+    },
+    "emailLogin": {
+      "$id": "#root/emailLogin",
+      "title": "Emaillogin",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "user150@example.com"
+      ],
+      "pattern": "^.*$"
+    },
+    "senhaLogin": {
+      "$id": "#root/senhaLogin",
+      "title": "Senhalogin",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "password150"
+      ],
+      "pattern": "^.*$"
+    }
+  }
+}
