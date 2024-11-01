@@ -1,0 +1,115 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1730419190.json",
+  "title": "Root",
+  "type": "array",
+  "default": [],
+  "items":{
+    "$id": "#root/items",
+    "title": "Items",
+    "type": "object",
+    "required": [
+      "idColetaE",
+      "dataColeta",
+      "idUsuario",
+      "idQrCode",
+      "status",
+      "endereco",
+      "telefone",
+      "cpf",
+      "cnpj"
+    ],
+    "properties": {
+      "idColetaE": {
+        "$id": "#root/items/idColetaE",
+        "title": "Idcoletae",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "66cc5a673e3b5f5e694ea83a"
+        ],
+        "pattern": "^.*$"
+      },
+      "dataColeta": {
+        "$id": "#root/items/dataColeta",
+        "title": "Datacoleta",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "2024-09-12"
+        ],
+        "pattern": "^.*$"
+      },
+      "idUsuario": {
+        "$id": "#root/items/idUsuario",
+        "title": "Idusuario",
+        "type": "integer",
+        "examples": [
+          3
+        ],
+        "default": 0
+      },
+      "idQrCode": {
+        "$id": "#root/items/idQrCode",
+        "title": "Idqrcode",
+        "type": "integer",
+        "examples": [
+          3456789012345678
+        ],
+        "default": 0
+      },
+      "status": {
+        "$id": "#root/items/status",
+        "title": "Status",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "CANCELADO"
+        ],
+        "pattern": "^.*$"
+      },
+      "endereco": {
+        "$id": "#root/items/endereco",
+        "title": "Endereco",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "Rua C, 789, Meireles, Fortaleza"
+        ],
+        "pattern": "^.*$"
+      },
+      "telefone": {
+        "$id": "#root/items/telefone",
+        "title": "Telefone",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "85999876543"
+        ],
+        "pattern": "^.*$"
+      },
+      "cpf": {
+        "$id": "#root/items/cpf",
+        "title": "Cpf",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "345.678.901-22"
+        ],
+        "pattern": "^.*$"
+      },
+      "cnpj": {
+        "$id": "#root/items/cnpj",
+        "title": "Cnpj",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "22.345.678/0001-22"
+        ],
+        "pattern": "^.*$"
+      }
+    }
+  }
+
+}

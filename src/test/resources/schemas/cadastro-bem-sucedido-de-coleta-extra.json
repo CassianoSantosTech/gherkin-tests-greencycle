@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "idColetaE": { "type": "string" },
+    "dataColeta": { "type": "string", "format": "date" },
+    "idUsuario": { "type": "integer" },
+    "idQrCode": { "type": "integer" },
+    "status": { "type": "string" },
+    "endereco": { "type": "string" },
+    "telefone": { "type": "string", "pattern": "^[0-9]{10,11}$" },
+    "cpf": { "type": "string", "pattern": "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$" },
+    "cnpj": { "type": "string", "pattern": "^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$" }
+  },
+  "required": [
+    "idColetaE",
+    "dataColeta",
+    "idUsuario",
+    "idQrCode",
+    "status",
+    "endereco",
+    "telefone",
+    "cpf",
+    "cnpj"
+  ],
+  "additionalProperties": false
+}

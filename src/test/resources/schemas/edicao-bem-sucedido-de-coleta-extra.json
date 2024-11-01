@@ -1,0 +1,97 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1730413561.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "dataColeta",
+    "idUsuario",
+    "idQrCode",
+    "status",
+    "endereco",
+    "telefone",
+    "cpf",
+    "cnpj"
+  ],
+  "properties": {
+    "dataColeta": {
+      "$id": "#root/dataColeta",
+      "title": "Datacoleta",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "2024-11-25"
+      ],
+      "pattern": "^.*$"
+    },
+    "idUsuario": {
+      "$id": "#root/idUsuario",
+      "title": "Idusuario",
+      "type": "integer",
+      "examples": [
+        13
+      ],
+      "default": 0
+    },
+    "idQrCode": {
+      "$id": "#root/idQrCode",
+      "title": "Idqrcode",
+      "type": "integer",
+      "examples": [
+        1283734427423418
+      ],
+      "default": 0
+    },
+    "status": {
+      "$id": "#root/status",
+      "title": "Status",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "COLETADO"
+      ],
+      "pattern": "^.*$"
+    },
+    "endereco": {
+      "$id": "#root/endereco",
+      "title": "Endereco",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "Rua F, casa 100, José Walter"
+      ],
+      "pattern": "^.*$"
+    },
+    "telefone": {
+      "$id": "#root/telefone",
+      "title": "Telefone",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "85999999999"
+      ],
+      "pattern": "^.*$"
+    },
+    "cpf": {
+      "$id": "#root/cpf",
+      "title": "Cpf",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "054.876.234-56"
+      ],
+      "pattern": "^.*$"
+    },
+    "cnpj": {
+      "$id": "#root/cnpj",
+      "title": "Cnpj",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "12.345.678/0001-00"
+      ],
+      "pattern": "^.*$"
+    }
+  }
+}
