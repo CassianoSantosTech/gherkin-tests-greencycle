@@ -1,0 +1,108 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1730421888.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "idColetaF",
+    "dataColeta",
+    "usuarioId",
+    "qrCodeId",
+    "status",
+    "endereco",
+    "telefone",
+    "cpf",
+    "cnpj"
+  ],
+  "properties": {
+    "idColetaF": {
+      "$id": "#root/idColetaF",
+      "title": "Idcoletaf",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "67242338d5baed619afdb9f8"
+      ],
+      "pattern": "^.*$"
+    },
+    "dataColeta": {
+      "$id": "#root/dataColeta",
+      "title": "Datacoleta",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "2024-11-26"
+      ],
+      "pattern": "^.*$"
+    },
+    "usuarioId": {
+      "$id": "#root/usuarioId",
+      "title": "Usuarioid",
+      "type": "integer",
+      "examples": [
+        13
+      ],
+      "default": 0
+    },
+    "qrCodeId": {
+      "$id": "#root/qrCodeId",
+      "title": "Qrcodeid",
+      "type": "integer",
+      "examples": [
+        1283733294872423400
+      ],
+      "default": 0
+    },
+    "status": {
+      "$id": "#root/status",
+      "title": "Status",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "PENDENTE"
+      ],
+      "pattern": "^.*$"
+    },
+    "endereco": {
+      "$id": "#root/endereco",
+      "title": "Endereco",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "Rua J, casa 10, José Walter"
+      ],
+      "pattern": "^.*$"
+    },
+    "telefone": {
+      "$id": "#root/telefone",
+      "title": "Telefone",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "85999989999"
+      ],
+      "pattern": "^.*$"
+    },
+    "cpf": {
+      "$id": "#root/cpf",
+      "title": "Cpf",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "054.876.134-56"
+      ],
+      "pattern": "^.*$"
+    },
+    "cnpj": {
+      "$id": "#root/cnpj",
+      "title": "Cnpj",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "12.345.678/0001-00"
+      ],
+      "pattern": "^.*$"
+    }
+  }
+}
