@@ -44,4 +44,21 @@ public class ColetaFixaStep {
         Set<ValidationMessage> validateResponse = coletaFixaService.validateResponseAgainstSchema();
         Assert.assertTrue("O contrato está inválido. Erros encontrados: " + validateResponse, validateResponse.isEmpty());
     }
+
+    @Dado("que eu tenha os seguintes dados de coleta fixa para atualização:")
+    public void queEuTenhaOsSeguintesDadosDeColetaFixaParaAtualização(List<Map<String, String>> rows) {
+        for (Map<String, String> columns : rows) {
+            coletaFixaService.setFieldsColetaFixa(columns.get("campo"), columns.get("valor"));
+        }
+    }
+
+    @Quando("eu enviar a requisicao para o endpoint {string} de atualização de coleta fixa")
+    public void euEnviarARequisicaoParaOEndpointDeAtualizaçãoDeColetaFixa(String endpoint) {
+        coletaFixaService.updateColetaFixa(endpoint);
+    }
+
+    @Então("o status code da resposta de atualização de coleta fixa deve ser {int}")
+    public void oStatusCodeDaRespostaDeAtualizaçãoDeColetaFixaDeveSer(int statusCode) {
+        Assert.assertEquals(statusCode, coletaFixaService.response.statusCode());
+    }
 }

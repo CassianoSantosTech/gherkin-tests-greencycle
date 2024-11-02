@@ -72,7 +72,7 @@ public class ColetaFixaService {
     public void setContract(String contract) throws IOException {
         switch (contract) {
             case "Cadastro bem-sucedido de coleta fixa" -> jsonSchema = loadJsonFromFile(schemasPath + "cadastro-bem-sucedido-de-coleta-fixa.json");
-//            case "Edição bem-sucedida de coleta fixa" -> jsonSchema = loadJsonFromFile(schemasPath + "edicao-bem-sucedido-de-coleta-fixa.json");
+            case "Edição bem-sucedida de coleta fixa" -> jsonSchema = loadJsonFromFile(schemasPath + "edicao-bem-sucedido-de-coleta-fixa.json");
 //            case "Listagem de coletas fixas" -> jsonSchema = loadJsonFromFile(schemasPath + "listagem-coletas-fixas.json");
             default -> throw new IllegalStateException("Unexpected contract" + contract);
         }
